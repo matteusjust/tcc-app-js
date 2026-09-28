@@ -28,12 +28,10 @@
   ];
 
   const state = {
-    images: [],        // { id, name, source (canvas|img), width, height, thumbUrl }
-    selectedId: null,
+    images: [],        
     busy: false,
   };
 
-  // ---------- Image processing algorithms (pure functions on ImageData) ----------
 
   function toGrayscale(imageData) {
     const { width: w, height: h, data: src } = imageData;
@@ -130,7 +128,6 @@
     return new ImageData(out, w, h);
   }
 
-  // ---------- Benchmark helper ----------
 
   function stats(times) {
     const n = times.length;
@@ -154,8 +151,6 @@
   }
 
   const fmt = (n) => (n < 0.005 ? '< 0.01' : n.toFixed(2));
-
-  // ---------- Synthetic sample image (so the app opens with something to process) ----------
 
   function generateSampleImage(w, h, seed) {
     const canvas = document.createElement('canvas');
@@ -245,7 +240,6 @@
     reader.readAsDataURL(file);
   }
 
-  // ---------- Rendering ----------
 
   function buildGrid() {
     els.resultsGrid.innerHTML = '';
@@ -414,7 +408,6 @@
     els.runBtn.disabled = false;
   }
 
-  // ---------- Events ----------
 
   els.dropzone.addEventListener('click', () => els.fileInput.click());
   els.dropzone.addEventListener('keydown', (e) => {
@@ -456,7 +449,6 @@
 
   els.runBtn.addEventListener('click', runPipeline);
 
-  // ---------- Init ----------
 
   buildGrid();
   const sample = generateSampleImage(640, 480, 42);
