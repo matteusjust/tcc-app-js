@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const MAX_DIM = 1600;
+  const MAX_DIM = 4096;
 
   const els = {
     dropzone: document.getElementById('dropzone'),
